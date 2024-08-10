@@ -1,0 +1,28 @@
+<form method="post">
+    {% csrf_token %}
+    <label for="intercom_off">Intercom Office:</label>
+    <input type="text" name="intercom_off" value="{{ member.intercom_off }}"><br>
+
+    <label for="intercom_res">Intercom Residence:</label>
+    <input type="text" name="intercom_res" value="{{ member.intercom_res }}"><br>
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" name="phone_number" value="{{ member.phone_number }}"><br>
+
+    <label for="department">Department:</label>
+    <input type="text" name="department" value="{{ member.department }}"><br>
+
+    <label for="designation">Designation:</label>
+    <input type="text" name="designation" value="{{ member.designation }}"><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="{{ member.email }}"><br>
+
+    <label for="pprs_published">Papers Published:</label>
+    <input type="number" name="pprs_published" value="{{ member.pprs_published }}"><br>
+
+    <label for="number_of_interns">Number of Interns:</label>
+    <input type="number" name="number_of_interns" value="{{ member.number_of_interns }}"><br>
+
+    <button type="submit">Update</button>
+</form>

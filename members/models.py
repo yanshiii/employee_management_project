@@ -3,6 +3,8 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+
 
 class Member(models.Model):
     employee_id = models.PositiveIntegerField(unique=True)
@@ -15,6 +17,13 @@ class Member(models.Model):
     designation = models.CharField(max_length=50, blank=True, null=True)
     pprs_published = models.PositiveIntegerField(default=0)
     number_of_interns = models.PositiveIntegerField(default=0)
+    password = models.CharField(max_length=128, default=make_password("crri@123"))
+
+
+    def save(self, *args, **kwargs):
+        if self.password and not self.password.startswith('pbkdf2_sha256'):
+            self.password = make_password(self.password)
+        super().save(*args, **kwargs)
  
     
     def __str__(self):
