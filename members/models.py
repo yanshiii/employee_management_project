@@ -5,7 +5,6 @@ from django import forms
 from django.contrib.auth.models import User
 
 class Member(models.Model):
-    employee_id = models.PositiveIntegerField(max_length=3, unique=True)
     name = models.CharField(max_length=255, unique=True)
     intercom_off = models.CharField(max_length=10, blank=True, null=True)
     intercom_res = models.CharField(max_length=10, blank=True, null=True)
