@@ -163,3 +163,6 @@ if os.getenv('DJANGO_ENV') == 'production':
 else:
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
+
+AUTH_USER_MODEL = 'members.Member'

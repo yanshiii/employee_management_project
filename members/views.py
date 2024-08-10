@@ -170,6 +170,34 @@ def print(request):
     
 
 
+# def login_view(request):
+#     if request.method == "POST":
+#         employee_id = request.POST.get('employee_id').strip()
+#         password = request.POST.get('password').strip()
+
+#         if not employee_id or not password:
+#             return render(request, 'login.html', {'error': 'Please enter both employee ID and password.'})
+        
+#         # Authenticate using the custom EmployeeIDBackend
+#         member = authenticate(request, employee_id=employee_id, password=password)
+#         # print(f"Authenticated member: {member}")
+        
+#         if member is not None:
+#             # Login successful
+#             login(request, member)
+#             return redirect('emp_details', employee_id=member.employee_id)
+
+        
+#         else:
+#             # Authentication failed
+#             return render(request, 'login.html', {'error': 'Invalid login credentials'})
+#     else:
+#         return render(request, 'login.html')
+
+
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
 def login_view(request):
     if request.method == "POST":
         employee_id = request.POST.get('employee_id').strip()
@@ -177,23 +205,16 @@ def login_view(request):
 
         if not employee_id or not password:
             return render(request, 'login.html', {'error': 'Please enter both employee ID and password.'})
-        
-        # Authenticate using the custom EmployeeIDBackend
+
         member = authenticate(request, employee_id=employee_id, password=password)
-        # print(f"Authenticated member: {member}")
         
         if member is not None:
-            # Login successful
             login(request, member)
-            return redirect('emp_details', employee_id=member.employee_id)
-
-        
+            return redirect('emp_details')
         else:
-            # Authentication failed
             return render(request, 'login.html', {'error': 'Invalid login credentials'})
     else:
         return render(request, 'login.html')
-
 
 
 @login_required
