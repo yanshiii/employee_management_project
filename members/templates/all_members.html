@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  CRRI - List of all Members
+{% endblock %}
+
+{% block content %}
+<p><a href="/print">PRINT</a> 
+  <a href="/members">DISPLAY ALL MEMBERS</a> 
+</p>
+  <h1>Members</h1>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Intercom Office</th>
+      <th>Intercom Residence</th>
+      <th>Mobile Number</th>
+      <th>Division</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Papers Published</th>
+      <th>Worked with Intern(s)</th>
+    </tr>
+
+    {% for mymember in mymembers %}
+      <tr>
+        <td><a href="/members/details/{{ mymember.name }}">{{ mymember.name }}</a></td>
+        <td>{{ mymember.intercom_off }}</td>
+        <td>{{ mymember.intercom_res }}</td>
+        <td>{{ mymember.phone_number }}</td>
+        <td>{{ mymember.department }}</td>
+        <td>{{ mymember.designation }}</td>
+        <td>{{ mymember.email }}</td>
+        <td>{{ mymember.pprs_published }}</td>
+        <td>{{ mymember.number_of_interns }}</td>
+      </tr>
+    {% endfor %}
+  </table> 
+
+{% endblock %}

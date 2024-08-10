@@ -1,0 +1,29 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  Details about {{ mymember.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="topnav">
+    <a href="/members">Members</a>
+  </div>
+  
+  <div class="details-card">
+    <h2>{{ mymember.name }}</h2>
+    <p><strong>Phone:</strong> {{ mymember.intercom_off }}</p>
+    <p><strong>Intercom (Office):</strong> {{ mymember.intercom_res }}</p>
+    <p><strong>Intercom (Residence):</strong> {{ mymember.phone_number }}</p>
+    <p><strong>Division:</strong> {{ mymember.department }}</p>
+    <p><strong>Designation:</strong> {{ mymember.designation }}</p>
+    <p><strong>Email:</strong> {{ mymember.email }}</p>
+    <p <a href="/members/details/papers"></a>><strong>Papers Published:</strong> {{ mymember.pprs_published }}</p>
+    <p <a href="/members/details/interns_info"></a>><strong>Worked with Intern(s):</strong> {{ mymember.number_of_interns }}</p>
+    
+    <p>
+      Back to <a href="/members" style="color: #ffd700; text-decoration: underline;">Members</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
