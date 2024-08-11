@@ -7,14 +7,6 @@ logger = logging.getLogger(__name__)
 # pbkdf2_sha256$260000$KmC7czSvcp6u$BRCX2XGnSiyWxKx6VEMAE/FUocXppkAfV0lLKjRyKh8=
 
 class EmployeeIDBackend(BaseBackend):
-    # def authenticate(self, request, employee_id=None, password=None, **kwargs):
-    #     try:
-    #         member = Member.objects.get(employee_id=employee_id)
-    #         if member and check_password(password, member.password):
-    #             return member
-    #     except Member.DoesNotExist:
-    #         return None
-    
     def authenticate(self, request, employee_id=None, password=None, **kwargs):
         try:
             member = Member.objects.get(employee_id=employee_id)

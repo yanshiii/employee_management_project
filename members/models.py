@@ -1,37 +1,5 @@
-# # Create your models here.
-
-# from django.db import models
-# from django import forms
-# from django.contrib.auth.models import User
-# from django.contrib.auth.hashers import make_password
-
-
-# class Member(models.Model):
-#     employee_id = models.PositiveIntegerField(unique=True)
-#     name = models.CharField(max_length=255, unique=True)
-#     intercom_off = models.CharField(max_length=10, blank=True, null=True)
-#     intercom_res = models.CharField(max_length=10, blank=True, null=True)
-#     email = models.EmailField(max_length=254, unique=True, blank=True, null=True)
-#     phone_number = models.CharField(max_length=10, default='0000000000')
-#     department = models.CharField(max_length=50, blank=True, null=True)
-#     designation = models.CharField(max_length=50, blank=True, null=True)
-#     pprs_published = models.PositiveIntegerField(default=0)
-#     number_of_interns = models.PositiveIntegerField(default=0)
-#     password = models.CharField(max_length=128, default=make_password("crri@123"))
-
-
-#     def save(self, *args, **kwargs):
-#         if self.password and not self.password.startswith('pbkdf2_sha256'):
-#             self.password = make_password(self.password)
-#         super().save(*args, **kwargs)
- 
-    
-#     def __str__(self):
-#         return self.name
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.hashers import make_password
 
 class MemberManager(BaseUserManager):
     def create_user(self, employee_id, password=None, **extra_fields):
@@ -45,32 +13,27 @@ class MemberManager(BaseUserManager):
     def create_superuser(self, employee_id, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_superuser', True)  # Ensure this is set for superusers
         return self.create_user(employee_id, password, **extra_fields)
 
-class Member(AbstractBaseUser):
-    employee_id = models.PositiveIntegerField(unique=True)
-    name = models.CharField(max_length=255, unique=True)
-    intercom_off = models.CharField(max_length=10, blank=True, null=True)
-    intercom_res = models.CharField(max_length=10, blank=True, null=True)
-    email = models.EmailField(max_length=254, unique=True, blank=True, null=True)
-    phone_number = models.CharField(max_length=10, default='0000000000')
-    department = models.CharField(max_length=50, blank=True, null=True)
-    designation = models.CharField(max_length=50, blank=True, null=True)
-    pprs_published = models.PositiveIntegerField(default=0)
-    number_of_interns = models.PositiveIntegerField(default=0)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+class Member(AbstractBaseUser, PermissionsMixin):
+    employee_id = models.CharField(max_length=4, unique=True)
+    name = models.CharField(max_length=255)
+    intercom_off = models.CharField(max_length=10)
+    intercom_res = models.CharField(max_length=10)
+    phone_number = models.CharField(max_length=15)
+    department = models.CharField(max_length=255)
+    designation = models.CharField(max_length=255)
+    email = models.EmailField()
+    pprs_published = models.CharField(max_length=255)
+    number_of_interns = models.CharField(max_length=255)
     is_staff = models.BooleanField(default=False)
-    
-    USERNAME_FIELD = 'employee_id'
-    REQUIRED_FIELDS = []
+    is_active = models.BooleanField(default=True)
 
     objects = MemberManager()
 
-    def save(self, *args, **kwargs):
-        if self.password and not self.password.startswith('pbkdf2_sha256'):
-            self.password = make_password(self.password)
-        super().save(*args, **kwargs)
+    USERNAME_FIELD = 'employee_id'
+    REQUIRED_FIELDS = ['email']  # Add fields required when creating a superuser
 
     def __str__(self):
-        return self.name
+        return self.employee_id
