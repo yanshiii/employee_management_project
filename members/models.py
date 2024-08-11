@@ -37,3 +37,14 @@ class Member(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.employee_id
+    
+class Intern(models.Model):
+    member = models.ForeignKey(Member, related_name='interns', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    date_of_joining = models.DateField()
+    duration_of_training = models.CharField(max_length=100)
+    parent_institution = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name

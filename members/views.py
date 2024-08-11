@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import Intern
+from .forms import InternForm
 
 def members(request):
     mymembers = Member.objects.all().values(
@@ -117,3 +119,20 @@ def save_member(request):
             print(f"Integrity Error: {str(e)}")
             return render(request, '404.html', {'error': str(e)})
 
+# views.py
+
+
+
+def create_intern(request, member_id):
+    member = Member.objects.get(id=member_id)
+    if request.method == 'POST':
+        form = InternForm(request.POST)
+        if form.is_valid():
+            intern = form.save(commit=False)
+            intern.member = member
+            intern.save()
+            return redirect('member_detail', member_id=member.id)
+    else:
+        form = InternForm()
+    
+    return render(request, 'create_intern.html', {'form': form, 'member': member})

@@ -1,6 +1,6 @@
 {% extends 'master.html' %}
 
-{% block title %}
+{% comment %} {% block title %}
   Details about {{ mymember.name }}
 {% endblock %}
 
@@ -26,3 +26,48 @@
   </div>
 </div>
 {% endblock %} 
+ {% endcomment %}
+
+
+{% block title %}
+  Details about {{ mymember.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="topnav">
+    <a href="/members">Members</a>
+  </div>
+  
+  <div class="details-card">
+    <h2>{{ mymember.name }}</h2>
+    <p><strong>Phone number:</strong> {{ mymember.phone_number }}</p>
+    <p><strong>Intercom (Office):</strong> {{ mymember.intercom_off }}</p>
+    <p><strong>Intercom (Residence):</strong> {{ mymember.intercom_res }}</p>
+    <p><strong>Division:</strong> {{ mymember.department }}</p>
+    <p><strong>Designation:</strong> {{ mymember.designation }}</p>
+    <p><strong>Email:</strong> {{ mymember.email }}</p>
+    <p><strong>Papers Published:</strong> {{ mymember.pprs_published }}</p>
+    <p><strong>Worked with Intern(s):</strong> {{ mymember.number_of_interns }}</p>
+
+    {% if mymember.interns.count > 0 %}
+    <h3>Intern Details:</h3>
+    <ul>
+        {% for intern in mymember.interns.all %}
+        <li>
+            <p><strong>Name:</strong> {{ intern.name }}</p>
+            <p><strong>Date of Joining:</strong> {{ intern.date_of_joining }}</p>
+            <p><strong>Duration of Training:</strong> {{ intern.duration_of_training }}</p>
+            <p><strong>Parent Institution:</strong> {{ intern.parent_institution }}</p>
+            <p><strong>Phone Number:</strong> {{ intern.phone_number }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <p>
+      Back to <a href="/members" style="color: #ffd700; text-decoration: underline;">Members</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
