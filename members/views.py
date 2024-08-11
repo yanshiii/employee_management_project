@@ -21,11 +21,22 @@ def members(request):
     return HttpResponse(template.render(context,request))
     
 
+# def details(request, name):
+#     mymembers = Member.objects.get(name=name)
+#     template = loader.get_template('details.html')
+#     context = {'mymember': mymembers}
+#     return HttpResponse(template.render(context, request))
+
 def details(request, name):
-    mymembers = Member.objects.get(name=name)
+    mymember = Member.objects.get(name=name)
+    interns = mymember.interns.all()  # Fetch all related interns
     template = loader.get_template('details.html')
-    context = {'mymember': mymembers}
+    context = {
+        'mymember': mymember,
+        'interns': interns
+    }
     return HttpResponse(template.render(context, request))
+
 
 def main(request):
     template = loader.get_template('main.html')

@@ -1,34 +1,5 @@
 {% extends 'master.html' %}
 
-{% comment %} {% block title %}
-  Details about {{ mymember.name }}
-{% endblock %}
-
-{% block content %}
-<div class="container">
-  <div class="topnav">
-    <a href="/members">Members</a>
-  </div>
-  
-  <div class="details-card">
-    <h2>{{ mymember.name }}</h2>
-    <p><strong>Phone number:</strong> {{ mymember.phone_number }}</p>
-    <p><strong>Intercom (Office):</strong> {{ mymember.intercom_off }}</p>
-    <p><strong>Intercom (Residence):</strong> {{ mymember.intercom_res }}</p>
-    <p><strong>Division:</strong> {{ mymember.department }}</p>
-    <p><strong>Designation:</strong> {{ mymember.designation }}</p>
-    <p><strong>Email:</strong> {{ mymember.email }}</p>
-    <p><strong>Papers Published:</strong> {{ mymember.pprs_published }}</p>
-    <p><strong>Worked with Intern(s):</strong> {{ mymember.number_of_interns }}</p>
-    <p>
-      Back to <a href="/members" style="color: #ffd700; text-decoration: underline;">Members</a>
-    </p>
-  </div>
-</div>
-{% endblock %} 
- {% endcomment %}
-
-
 {% block title %}
   Details about {{ mymember.name }}
 {% endblock %}
@@ -50,7 +21,7 @@
     <p><strong>Papers Published:</strong> {{ mymember.pprs_published }}</p>
     <p><strong>Worked with Intern(s):</strong> {{ mymember.number_of_interns }}</p>
 
-    {% if mymember.interns.count > 0 %}
+    {% if mymember.interns.exists %}
     <h3>Intern Details:</h3>
     <ul>
         {% for intern in mymember.interns.all %}
@@ -63,6 +34,8 @@
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+    <p>No interns found for this member.</p>
     {% endif %}
 
     <p>
