@@ -1,6 +1,6 @@
 {% extends 'master.html' %}
 
-{% block title %}
+{% comment %} {% block title %}
   CRRI - List of all Members
 {% endblock %}
 
@@ -35,6 +35,47 @@
         <td>{{ mymember.email }}</td>
         <td>{{ mymember.pprs_published }}</td>
         <td>{{ mymember.number_of_interns }}</td>
+      </tr>
+    {% endfor %}
+  </table> 
+
+{% endblock %} {% endcomment %}
+
+
+{% block title %}
+  CRRI - List of all Members
+{% endblock %}
+
+{% block content %}
+<p><a href="/print">PRINT</a> 
+  
+</p>
+  <h1>Members</h1>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Intercom Office</th>
+      <th>Intercom Residence</th>
+      <th>Mobile Number</th>
+      <th>Division</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Papers Published</th>
+      <th>Worked with Intern(s)</th>
+    </tr>
+
+    {% for mymember in mymembers %}
+      <tr>
+        <td><a href="/members/details/{{ mymember.name }}">{{ mymember.name }}</a></td>
+        <td>{{ mymember.intercom_off|default:"-" }}</td>
+        <td>{{ mymember.intercom_res|default:"-" }}</td>
+        <td>{{ mymember.phone_number }}</td>
+        <td>{{ mymember.department }}</td>
+        <td>{{ mymember.designation }}</td>
+        <td>{{ mymember.email }}</td>
+        <td>{{ mymember.pprs_published|default:"-" }}</td>
+        <td>{{ mymember.number_of_interns|default:"-" }}</td>
       </tr>
     {% endfor %}
   </table> 

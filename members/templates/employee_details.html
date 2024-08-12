@@ -1,28 +1,63 @@
-<form method="post">
-    {% csrf_token %}
-    <label for="intercom_off">Intercom Office:</label>
-    <input type="text" name="intercom_off" value="{{ member.intercom_off }}"><br>
+{% load static %}
 
-    <label for="intercom_res">Intercom Residence:</label>
-    <input type="text" name="intercom_res" value="{{ member.intercom_res }}"><br>
-
-    <label for="phone_number">Phone Number:</label>
-    <input type="text" name="phone_number" value="{{ member.phone_number }}"><br>
-
-    <label for="department">Department:</label>
-    <input type="text" name="department" value="{{ member.department }}"><br>
-
-    <label for="designation">Designation:</label>
-    <input type="text" name="designation" value="{{ member.designation }}"><br>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" value="{{ member.email }}"><br>
-
-    <label for="pprs_published">Papers Published:</label>
-    <input type="number" name="pprs_published" value="{{ member.pprs_published }}"><br>
-
-    <label for="number_of_interns">Number of Interns:</label>
-    <input type="number" name="number_of_interns" value="{{ member.number_of_interns }}"><br>
-
-    <button type="submit">Update</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{% static 'self_updation.css' %}">
+</head>
+<body>
+    <div class="details-container">
+        <div class="details-box">
+            <h2>Update Details for {{ member.name }}</h2>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="input-container">
+                    <label for="intercom_off">Intercom Office:</label>
+                    <input type="text" id="intercom_off" name="intercom_off" value="{{ member.intercom_off }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="intercom_res">Intercom Residence:</label>
+                    <input type="text" id="intercom_res" name="intercom_res" value="{{ member.intercom_res }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ member.phone_number }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" value="{{ member.department }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="designation">Designation:</label>
+                    <input type="text" id="designation" name="designation" value="{{ member.designation }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ member.email }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="pprs_published">Papers Published:</label>
+                    <input type="number" id="pprs_published" name="pprs_published" value="{{ member.pprs_published }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="number_of_interns">Number of Interns:</label>
+                    <input type="number" id="number_of_interns" name="number_of_interns" value="{{ member.number_of_interns }}">
+                </div>
+                
+                <button type="submit" class="update-button">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

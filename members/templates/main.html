@@ -1,16 +1,23 @@
 {% extends 'master.html' %}
+{% load static %}
 
 {% block title %}
   Welcome to CRRI
 {% endblock %}
 
 {% block content %}
+<img src="static/csir_logo.png" class="logo">
 
-  <div class="main">
-    <h1>Welcome to CRRI</h1>
-  </div>
+<h1>Welcome to CRRI</h1>
 
-  <div class="card-container">
+<div class="info-section">
+  <h2>About CSIR-Central Road Research Institute (CRRI)</h2>
+  <p>CSIR-Central Road Research Institute (CRRI), a premier national laboratory established in 1952, is a constituent of the Council of Scientific and Industrial Research (CSIR). The institute is engaged in research and development projects on various aspects related to road and runway design, construction, and maintenance. CRRI also provides technical and consultancy services in India and abroad and has been organizing National & International Training Programmes since 1962.</p>
+</div>
+
+<div class="content-section">
+  <!-- Links to Members and Divisions -->
+  <div class="links-section">
     <a href="/members" class="card">
       <div class="overlay">
         <p>Check out all our members</p>
@@ -22,5 +29,11 @@
       </div>
     </a>
   </div>
+
+  <!-- Add your image here -->
+  <div class="image-section">
+    <img src="static/image1.jpg" alt="Your Image">
+  </div>
 </div>
+
 {% endblock %}
