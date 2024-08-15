@@ -140,7 +140,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Login URL
-# LOGIN_URL = 'login'
+LOGIN_URL = 'login_view'
 
 # settings.py
 

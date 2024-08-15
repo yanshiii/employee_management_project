@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path('', views.main, name='main'),
     path('members/', views.members, name='members'),
@@ -11,5 +10,5 @@ urlpatterns = [
     path('print/', views.print, name='print'),
     path('login/', views.login_view, name='login_view'),
     path('details/<int:employee_id>/', views.employee_details, name='emp_details'),  # This should match
-
+    path('reset-password/', views.password_reset_view, name='reset_password'),
 ]

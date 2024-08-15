@@ -12,7 +12,6 @@ class MemberManager(BaseUserManager):
 
     def create_superuser(self, employee_id, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_superuser', True)  # Ensure this is set for superusers
         return self.create_user(employee_id, password, **extra_fields)
 
@@ -25,8 +24,11 @@ class Member(AbstractBaseUser, PermissionsMixin):
     department = models.CharField(max_length=255)
     designation = models.CharField(max_length=255)
     email = models.EmailField()
-    pprs_published = models.CharField(max_length=255)
-    number_of_interns = models.CharField(max_length=255)
+    jpub = models.CharField(max_length=255, default='-')
+    cpub = models.CharField(max_length=255, default='-')
+    bpub = models.CharField(max_length=255, default='-')
+    number_of_interns = models.CharField(max_length=255, default='-')
+    conferences_attended = models.CharField(max_length=255, default='-')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 

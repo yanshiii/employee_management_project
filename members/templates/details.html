@@ -12,14 +12,18 @@
   
   <div class="details-card">
     <h2>{{ mymember.name }}</h2>
+    <p><strong>ID:</strong> {{ mymember.employee_id }}</p>
     <p><strong>Phone number:</strong> {{ mymember.phone_number }}</p>
     <p><strong>Intercom (Office):</strong> {{ mymember.intercom_off }}</p>
     <p><strong>Intercom (Residence):</strong> {{ mymember.intercom_res }}</p>
     <p><strong>Division:</strong> {{ mymember.department }}</p>
     <p><strong>Designation:</strong> {{ mymember.designation }}</p>
     <p><strong>Email:</strong> {{ mymember.email }}</p>
-    <p><strong>Papers Published:</strong> {{ mymember.pprs_published }}</p>
+    <p><strong>Journal Article(s):</strong> {{ mymember.jpub }}</p>
+    <p><strong>Conference Paper(s):</strong> {{ mymember.cpub }}</p>
+    <p><strong>Book(s):</strong> {{ mymember.bpub }}</p>
     <p><strong>Worked with Intern(s):</strong> {{ mymember.number_of_interns }}</p>
+    <p><strong>Conferences Attended:</strong> {{ mymember.conferences_attended }}</p>
 
     {% if mymember.interns.exists %}
     <h3>Intern Details:</h3>

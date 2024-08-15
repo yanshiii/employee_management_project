@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #343a40;
-  background-image: url(csir_logo.png);
+  background-image: url(final_bg.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -110,13 +110,12 @@ body {
 
 .image-section {
   flex-shrink: 0;
-  margin-left: 50px; /* Small margin for spacing */
-  margin-top: -100px;
+  margin-left: 150px; /* Small margin for spacing */
+  margin-top: 75px;
 }
 
 .image-section img {
-  max-width: 400px; /* Adjust the size of the image */
-  border-radius: 10px;
+  /* max-width: 400px; Adjust the size of the image */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
