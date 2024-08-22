@@ -21,6 +21,10 @@
         Administration Office</a>
     </p>
     <p class="card">
+      <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}" >
+        Finance and Accounts Section</a>
+    </p>
+    <p class="card">
       <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}" >
         Store and Purchase Section</a>
     </p>
@@ -116,15 +120,15 @@
           Canteen</a>
       </p>
       <p class="card">
-        <a href="{% url 'divmembers' 'CRRI-Recreation-Club' %}" >
-          CRRI Recreation Club</a>
+        <a href="{% url 'divmembers' 'Guest-House' %}" >
+          Guest House</a>
       </p>
       <p class="card">
-        <a href="{% url 'divmembers' 'Secirity-Section' %}" >
+        <a href="{% url 'divmembers' 'Security-Section' %}" >
           Security Section</a>
       </p>
       <p>
-        <a href="divisions/{{ x.id }}">{{ x.name }}</a>
+        Back to <a href="/members" style="color: #ffd700; text-decoration: underline;">Members</a>
       </p>
     </div>
   </div>

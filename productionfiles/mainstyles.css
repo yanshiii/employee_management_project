@@ -11,6 +11,49 @@ body {
   background-repeat: no-repeat;
 }
 
+
+.topnav {
+  background-color: rgb(3, 77, 151);
+  color: #ffffff;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  transition: color 0.3s;
+}
+
+.topnav a:hover,
+.topnav a:active {
+  text-decoration: underline;
+  color: #ffd700;
+}
+
+/* Ensure options are displayed horizontally */
+.topnav {
+  flex-direction: row;  /* Horizontal layout */
+  flex-wrap: nowrap;    /* Prevent wrapping */
+}
+
+@media (max-width: 768px) {
+  .topnav {
+    flex-direction: row; /* Ensure horizontal layout on smaller screens as well */
+    justify-content: space-around; /* Adjust alignment for smaller screens */
+  }
+}
+
+
+/* 
 .topnav {
   background-color: rgba(0, 64, 128, 0.8);
   color: #ffffff;
@@ -32,11 +75,12 @@ body {
 .topnav a:active {
   text-decoration: underline;
   color: #ffd700;
-}
+} */
 
 .logo {
   max-height: 80px;
   margin-right: 20px;
+  padding-top: 10px;
 }
 
 .main {

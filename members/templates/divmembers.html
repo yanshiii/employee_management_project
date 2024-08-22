@@ -26,19 +26,19 @@
 
     {% for x in mymembers %}
       <tr>
-        <td><a href="/members/details/{{ x.name }}">{{ x.name }}</a></td>
-        <td>{{ x.employee_id }}</td>
-        <td>{{ x.intercom_off }}</td>
-        <td>{{ x.intercom_res }}</td>
-        <td>{{ x.phone_number }}</td>
-        <td>{{ x.department }}</td>
-        <td>{{ x.designation }}</td>
-        <td>{{ x.email }}</td>
-        <td>{{ x.jpub }}</td>
-        <td>{{ x.cpub }}</td>
-        <td>{{ x.bpub }}</td>
-        <td>{{ x.number_of_interns }}</td>
-        <td>{{ x.conferences_attended }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);"><a href="/members/details/{{ x.name }}">{{ x.name }}</a></td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.employee_id }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.intercom_off }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.intercom_res }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.phone_number }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.department }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.designation }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.email }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.jpub }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.cpub }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.bpub }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.number_of_interns }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ x.conferences_attended }}</td>
       </tr>
     {% endfor %}
   </table>

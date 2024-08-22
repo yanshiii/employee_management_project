@@ -9,6 +9,6 @@ urlpatterns = [
     path('members/details/<str:name>', views.details, name='details'),
     path('print/', views.print, name='print'),
     path('login/', views.login_view, name='login_view'),
-    path('details/<int:employee_id>/', views.employee_details, name='emp_details'),  # This should match
+    path('details/<int:employee_id>/', views.employee_details, name='emp_details'), 
     path('reset-password/', views.password_reset_view, name='reset_password'),
 ]

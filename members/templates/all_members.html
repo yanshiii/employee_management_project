@@ -1,4 +1,5 @@
 {% extends 'master.html' %}
+{% load static %}
 {% block title %}
   CRRI - List of all Members
 {% endblock %}
@@ -26,19 +27,19 @@
 
     {% for mymember in mymembers %}
       <tr>
-        <td><a href="/members/details/{{ mymember.name }}">{{ mymember.name }}</a></td>
-        <td>{{ mymember.employee_id }}</td>
-        <td>{{ mymember.intercom_off|default:"-" }}</td>
-        <td>{{ mymember.intercom_res|default:"-" }}</td>
-        <td>{{ mymember.phone_number }}</td>
-        <td>{{ mymember.department }}</td>
-        <td>{{ mymember.designation }}</td>
-        <td>{{ mymember.email }}</td>
-        <td>{{ mymember.jpub|default:"-" }}</td>
-        <td>{{ mymember.cpub|default:"-" }}</td>
-        <td>{{ mymember.bpub|default:"-" }}</td>
-        <td>{{ mymember.number_of_interns|default:"-" }}</td>
-        <td>{{ mymember.conferences_attended|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);"><a href="/members/details/{{ mymember.name }}">{{ mymember.name }}</a></td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.employee_id }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.intercom_off|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.intercom_res|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.phone_number }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.department }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.designation }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.email }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.jpub|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.cpub|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.bpub|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.number_of_interns|default:"-" }}</td>
+        <td style="background-color: rgba(0, 64, 128, 0.8);">{{ mymember.conferences_attended|default:"-" }}</td>
       </tr>
     {% endfor %}
   </table>
