@@ -1,4 +1,5 @@
 {% load static %}
+{% comment %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,11 @@
     <link rel="stylesheet" href="{% static 'login_page.css' %}">
 </head>
 <body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        <a href="/divisions">Divisions</a>
+    </div>
     <div class="login-container">
         <div class="login-box">
             <h2>Login</h2>
@@ -42,5 +48,47 @@
             text-align: center;
         }
     </style>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'login_page.css' %}">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        <a href="/divisions">Divisions</a>
+    </div>
+    <div class="login-container">
+        <div class="login-box" style="padding-left:70px">
+            <h2>Login</h2>
+            <p>Please enter your Employee ID and your Password</p>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="employee_id"><i class="fas fa-user"></i></label>
+                    <input type="text" id="employee_id" name="employee_id" placeholder="Employee ID" required style="padding-left: 10px">
+                </div>
+                <div class="input-container">
+                    <label for="password"><i class="fas fa-key"></i></label>
+                    <input type="password" id="password" name="password" placeholder="Password" required style="padding-left: 10px">
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <p><a href="{% url 'reset_password' %}">Reset password</a></p>
+        </div>
+    </div>
 </body>
 </html>

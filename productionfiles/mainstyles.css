@@ -15,7 +15,7 @@ body {
 .topnav {
   background-color: rgb(3, 77, 151);
   color: #ffffff;
-  padding: 10px 15px;
+  padding: 5x 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +29,7 @@ body {
 .topnav a {
   text-decoration: none;
   color: #ffffff;
-  padding: 10px 15px;
+  padding: 10px 10px;
   transition: color 0.3s;
 }
 
@@ -156,6 +156,7 @@ body {
   flex-shrink: 0;
   margin-left: 150px; /* Small margin for spacing */
   margin-top: 75px;
+
 }
 
 .image-section img {

@@ -221,8 +221,11 @@ def employee_details(request, employee_id):
         member.department = request.POST.get('department')
         member.designation = request.POST.get('designation')
         member.email = request.POST.get('email')
-        member.pprs_published = request.POST.get('pprs_published')
+        member.jpub = request.POST.get('jpub')
+        member.cpub = request.POST.get('cpub')
+        member.bpub = request.POST.get('bpub')
         member.number_of_interns = request.POST.get('number_of_interns')
+        member.conferences_attended = request.POST.get('conferences_attended')
         
         # Validate and save the updated data
         member.save()

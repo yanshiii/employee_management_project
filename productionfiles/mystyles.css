@@ -243,3 +243,31 @@ td {
 th {
   height: 100%;
 }
+
+
+@media print {
+  .topnav, .header, .footer {
+      display: none; /* Hide unnecessary elements */
+  }
+  body {
+      background: none;
+      margin: 0;
+  }
+  .table-container {
+      overflow: visible;
+  }
+  table {
+      width: 100%;
+      font-size: smaller;
+      page-break-inside: auto; 
+  }
+  tr {
+      page-break-inside: avoid; 
+      page-break-after: auto;
+  }
+  .table-container::after {
+      content: "";
+      display: block;
+      page-break-after: always;
+  }
+}

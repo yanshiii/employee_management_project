@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Details</title>
     <link rel="stylesheet" href="{% static 'self_updation.css' %}">
-</head>
+   </head>
 <body>
-    <div class="details-container">
-        <div class="details-box">
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        <a href="/divisions">Divisions</a>
+    </div>
+    <div class="details-container" style="padding-top:150px; margin-top:300px">
+        <div class="details-box" style="padding-top:50px">
             <h2>Update Details for {{ member.name }}</h2>
-            <form method="post">
+            <form method="post" style="padding-top :50px">
                 {% csrf_token %}
                 
                 <div class="input-container">
@@ -46,13 +51,27 @@
                 </div>
                 
                 <div class="input-container">
-                    <label for="pprs_published">Papers Published:</label>
-                    <input type="number" id="pprs_published" name="pprs_published" value="{{ member.pprs_published }}">
+                    <label for="jpub">Journal(s) Published:</label>
+                    <input type="number" id="jpub" name="jpub" value="{{ member.jpub }}">
                 </div>
                 
                 <div class="input-container">
+                    <label for="cpub">Conference Paper(s) Published:</label>
+                    <input type="number" id="cpub" name="cpub" value="{{ member.cpub }}">
+                </div>
+
+                <div class="input-container">
+                    <label for="bpub">Book(s) Published:</label>
+                    <input type="number" id="bpub" name="bpub" value="{{ member.bpub }}">
+                </div>
+                <div class="input-container">
                     <label for="number_of_interns">Number of Interns:</label>
                     <input type="number" id="number_of_interns" name="number_of_interns" value="{{ member.number_of_interns }}">
+                </div>
+
+                <div class="input-container">
+                    <label for="number_of_interns">Number of Conferences Attended:</label>
+                    <input type="number" id="conferences_attended" name="conferences_attended" value="{{ member.conferences_attended }}">
                 </div>
                 
                 <button type="submit" class="update-button">Update</button>
@@ -61,3 +80,43 @@
     </div>
 </body>
 </html>
+
+
+<style>
+    .topnav {
+        background-color: rgb(3, 77, 151);
+        color: #ffffff;
+        padding: 5px 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        left: 0;
+    }
+    
+    .topnav a {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 10px 10px;
+        transition: color 0.3s;
+    }
+    
+    .topnav a:hover,
+    .topnav a:active {
+        text-decoration: underline;
+        color: #ffd700;
+    }
+    
+    @media (max-width: 768px) {
+        .topnav {
+            justify-content: space-around;
+            flex-direction: row;
+        }
+    }
+    
+
+</style>

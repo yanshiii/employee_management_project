@@ -6,10 +6,7 @@
 
 {% block content %}
 <div class="container">
-  <div class="topnav">
-    <a href="/members">Members</a>
-  </div>
-  
+
   <div class="details-card">
     <h2>{{ mymember.name }}</h2>
     <p><strong>ID:</strong> {{ mymember.employee_id }}</p>
@@ -39,7 +36,7 @@
         {% endfor %}
     </ul>
     {% else %}
-    <p>No interns found for this member.</p>
+    <p>No intern details found for this member.</p>
     {% endif %}
 
     <p>
