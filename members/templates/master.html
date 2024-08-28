@@ -1,21 +1,184 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CRRI{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'mystyles.css' %}">
-</head>
-<body>
-    </div> <div class="topnav" style="padding-bottom: 0px">
-        <a href="/">Home</a>
-        <a href="/members">Members</a>
-        <a href="/divisions">Divisions</a>
-        <a href="/login">Login</a>
-    </div>
-    <div class="main">
-        {% block content %}{% endblock %}
-    </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        CRRI
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'mystyles.css' %}" />
+    <style>
+      .dropbtn {
+        background-color: #AA184E;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #AA184E; /* Match the topnav background color */
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        font-size:13px;
+      }
+
+      .dropdown-content a {
+        color: white; /* Match the topnav link color */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #323e4d; 
+        color: white; 
+        text-decoration: underline;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #AA184E;;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav" style="padding-bottom: 0px">
+      <a href="/">Home</a>
+      <a href="/members">Members</a>
+      <div class="dropdown">
+        <button class="dropbtn">R&D Areas</button>
+        <div class="dropdown-content">
+          <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+          <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+          <a href="{% url 'divmembers' 'Flexible-Pavements-Division' %}" >Flexible Pavements Division</a>
+          <a href="{% url 'divmembers' 'Pavement-Evaluation-Division' %}" >Pavement Evaluation Division</a>
+          <a href="{% url 'divmembers' 'Rigid-Pavements-Division' %}" >Rigid Pavements Division</a>
+          <a href="{% url 'divmembers' 'Transportation-Planning-and-Environment-Division' %}" >Transportation Planning and Environment Division</a>
+          <a href="{% url 'divmembers' 'Traffic-Engineering-and-Safety-Division' %}" >Traffic Engineering and Safety Division</a>
+        </div>
+      </div>
+          
+
+      <div class="dropdown">
+        <button class="dropbtn">R&D Management Areas</button>
+        <div class="dropdown-content">
+          <a href="{% url 'divmembers' 'Knowledge-Resource-Centre' %}" >Knowledge Resource Centre</a>
+          <a href="{% url 'divmembers' 'Director-Office' %}" >Director's Office</a>
+          <a href="{% url 'divmembers' 'Controller-of-Administration' %}" >Controller of Administration</a>
+          <a href="{% url 'divmembers' 'Administration-Office' %}" >Administration Office</a>
+          <a href="{% url 'divmembers' 'Computer-Centre-and-Network-Division' %}" >Computer Centre and Network Division</a>
+          <a href="{% url 'divmembers' 'Information-Liaison-and-Training-Division' %}" >Information Liaison and Training Division</a>
+          <a href="{% url 'divmembers' 'Planning-Monitoring-and-Evaluation-Division' %}" >Planning Monitoring and Evaluation Division</a>
+          <a href="{% url 'divmembers' 'Engineering-Services-Division' %}" >Engineering Services Division</a>          
+          <a href="{% url 'divmembers' 'Mechanical-and-Transport-Division' %}" >Mechanical and Transport Division</a>
+          <a href="{% url 'divmembers' 'Quality-Management-Division' %}" >Quality Management Division</a>
+          <a href="{% url 'divmembers' 'MBSQ-Maintenance-Division' %}" >MBSQ Maintenance Division</a>
+        </div>
+      </div>
+          
+            
+      <div class="dropdown">
+        <button class="dropbtn">Administration</button>
+        <div class="dropdown-content">
+          <a href="{% url 'divmembers' 'Establishment-Section-I' %}" >Establishment Section I</a>
+          <a href="{% url 'divmembers' 'Establishment-Section-II' %}" >Establishment Section II</a>
+          <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}" >Finance and Accounts Section</a>
+          <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}" >Store and Purchase Section</a>            
+          <a href="{% url 'divmembers' 'Personnel-Cell' %}" >Personnel Cell</a>
+          <a href="{% url 'divmembers' 'Vigilance-Section' %}" >Vigilance Section</a>
+          <a href="{% url 'divmembers' 'Rajbhasha' %}" >Rajbhasha</a>
+          <a href="{% url 'divmembers' 'Right-to-Information-Cell' %}" >Right to Information Cell</a>
+          <a href="{% url 'divmembers' 'Canteen' %}" >Canteen</a>
+          <a href="{% url 'divmembers' 'Guest-House' %}" >Guest House</a>
+          <a href="{% url 'divmembers' 'Horticulture' %}" >Horticulture</a>
+          <a href="{% url 'divmembers' 'Security-Section' %}" >Security Section</a>
+          </div>
+        
+      </div>
+      
+    <a href="/login">Login</a>
+  </div>
+
+  <div class="main">
+    {% block content %}
+    {% endblock %}
+  </div>
+  </body>
 </html>
+
+{% comment %} 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .dropbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+      .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body style="background-color:white;">
+    <div class="dropdown">
+      <button class="dropbtn">Divisions</button>
+      <div class="dropdown-content">
+        <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+        <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+  </body>
+</html> {% endcomment %}

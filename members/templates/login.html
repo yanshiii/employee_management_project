@@ -1,59 +1,48 @@
-{% load static %}
-{% comment %} 
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'login_page.css' %}">
-</head>
-<body>
-    <div class="topnav">
-        <a href="/">Home</a>
-        <a href="/members">Members</a>
-        <a href="/divisions">Divisions</a>
-    </div>
-    <div class="login-container">
-        <div class="login-box">
-            <h2>Login</h2>
-            <p>Please enter your Employee ID and your Password</p>
-
-            {% if error %}
-                <p class="error-message">{{ error }}</p>
-            {% endif %}
-
-            <form method="post">
-                {% csrf_token %}
-                <div class="input-container">
-                    <label for="employee_id"><i class="fas fa-user"></i></label>
-                    <input type="text" id="employee_id" name="employee_id" placeholder="Employee ID" required style="padding-left: 10px">
-                </div>
-                <div class="input-container">
-                    <label for="password"><i class="fas fa-key"></i></label>
-                    <input type="password" id="password" name="password" placeholder="Password" required style="padding-left: 10px">
-                </div>
-                <button type="submit" class="login-button">Login</button>
-            </form>
-            <p><a href="{% url 'reset_password' %}">Reset password</a></p>
-        </div>
-    </div>
-
-    <!-- Optional CSS for error message styling -->
     <style>
-        .error-message {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: center;
+        .dropbtn {
+          background-color: #AA184E;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
         }
-    </style>
-</body>
-</html> {% endcomment %}
-
-
-<!DOCTYPE html>
-<html lang="en">
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #AA184E;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: white;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+          background-color: rgb(3, 77, 151);
+        }
+      </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,11 +50,61 @@
     <link rel="stylesheet" href="{% static 'login_page.css' %}">
 </head>
 <body>
-    <div class="topnav">
+    <div class="topnav" style="padding-bottom: 0px">
         <a href="/">Home</a>
         <a href="/members">Members</a>
-        <a href="/divisions">Divisions</a>
-    </div>
+        <div class="dropdown">
+          <button class="dropbtn">R&D Areas</button>
+          <div class="dropdown-content">
+            <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+            <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+            <a href="{% url 'divmembers' 'Flexible-Pavements-Division' %}" >Flexible Pavements Division</a>
+            <a href="{% url 'divmembers' 'Pavement-Evaluation-Division' %}" >Pavement Evaluation Division</a>
+            <a href="{% url 'divmembers' 'Rigid-Pavements-Division' %}" >Rigid Pavements Division</a>
+            <a href="{% url 'divmembers' 'Transportation-Planning-and-Environment-Division' %}" >Transportation Planning and Environment Division</a>
+            <a href="{% url 'divmembers' 'Traffic-Engineering-and-Safety-Division' %}" >Traffic Engineering and Safety Division</a>
+          </div>
+        </div>
+            
+  
+        <div class="dropdown">
+          <button class="dropbtn">R&D Management Areas</button>
+          <div class="dropdown-content">
+            <a href="{% url 'divmembers' 'Knowledge-Resource-Centre' %}" >Knowledge Resource Centre</a>
+            <a href="{% url 'divmembers' 'Director-Office' %}" >Director's Office</a>
+            <a href="{% url 'divmembers' 'Controller-of-Administration' %}" >Controller of Administration</a>
+            <a href="{% url 'divmembers' 'Administration-Office' %}" >Administration Office</a>
+            <a href="{% url 'divmembers' 'Computer-Centre-and-Network-Division' %}" >Computer Centre and Network Division</a>
+            <a href="{% url 'divmembers' 'Information-Liaison-and-Training-Division' %}" >Information Liaison and Training Division</a>
+            <a href="{% url 'divmembers' 'Planning-Monitoring-and-Evaluation-Division' %}" >Planning Monitoring and Evaluation Division</a>
+            <a href="{% url 'divmembers' 'Engineering-Services-Division' %}" >Engineering Services Division</a>          
+            <a href="{% url 'divmembers' 'Mechanical-and-Transport-Division' %}" >Mechanical and Transport Division</a>
+            <a href="{% url 'divmembers' 'Quality-Management-Division' %}" >Quality Management Division</a>
+            <a href="{% url 'divmembers' 'MBSQ-Maintenance-Division' %}" >MBSQ Maintenance Division</a>
+          </div>
+        </div>
+            
+              
+        <div class="dropdown">
+          <button class="dropbtn">Administration</button>
+          <div class="dropdown-content">
+            <a href="{% url 'divmembers' 'Establishment-Section-I' %}" >Establishment Section I</a>
+            <a href="{% url 'divmembers' 'Establishment-Section-II' %}" >Establishment Section II</a>
+            <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}" >Finance and Accounts Section</a>
+            <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}" >Store and Purchase Section</a>            
+            <a href="{% url 'divmembers' 'Personnel-Cell' %}" >Personnel Cell</a>
+            <a href="{% url 'divmembers' 'Vigilance-Section' %}" >Vigilance Section</a>
+            <a href="{% url 'divmembers' 'Rajbhasha' %}" >Rajbhasha</a>
+            <a href="{% url 'divmembers' 'Right-to-Information-Cell' %}" >Right to Information Cell</a>
+            <a href="{% url 'divmembers' 'Canteen' %}" >Canteen</a>
+            <a href="{% url 'divmembers' 'Guest-House' %}" >Guest House</a>
+            <a href="{% url 'divmembers' 'Horticulture' %}" >Horticulture</a>
+            <a href="{% url 'divmembers' 'Security-Section' %}" >Security Section</a>
+            </div>
+          
+        </div>
+        
+    
     <div class="login-container">
         <div class="login-box" style="padding-left:70px">
             <h2>Login</h2>
@@ -91,4 +130,96 @@
         </div>
     </div>
 </body>
+</html> {% endcomment %}
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'login_page.css' %}">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        <div class="dropdown">
+            <button class="dropbtn" style>R&D Areas</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+                <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+                <a href="{% url 'divmembers' 'Flexible-Pavements-Division' %}">Flexible Pavements Division</a>
+                <a href="{% url 'divmembers' 'Pavement-Evaluation-Division' %}" >Pavement Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Rigid-Pavements-Division' %}" >Rigid Pavements Division</a>
+                <a href="{% url 'divmembers' 'Transportation-Planning-and-Environment-Division' %}" >Transportation Planning and Environment Division</a>
+                <a href="{% url 'divmembers' 'Traffic-Engineering-and-Safety-Division' %}" >Traffic Engineering and Safety Division</a>               
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">R&D Management Areas</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Knowledge-Resource-Centre' %}">Knowledge Resource Centre</a>
+                <a href="{% url 'divmembers' 'Director-Office' %}">Director's Office</a>
+                <a href="{% url 'divmembers' 'Controller-of-Administration' %}" >Controller of Administration</a>
+                <a href="{% url 'divmembers' 'Administration-Office' %}" >Administration Office</a>
+                <a href="{% url 'divmembers' 'Computer-Centre-and-Network-Division' %}" >Computer Centre and Network Division</a>
+                <a href="{% url 'divmembers' 'Information-Liaison-and-Training-Division' %}" >Information Liaison and Training Division</a>
+                <a href="{% url 'divmembers' 'Planning-Monitoring-and-Evaluation-Division' %}" >Planning Monitoring and Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Engineering-Services-Division' %}" >Engineering Services Division</a>          
+                <a href="{% url 'divmembers' 'Mechanical-and-Transport-Division' %}" >Mechanical and Transport Division</a>
+                <a href="{% url 'divmembers' 'Quality-Management-Division' %}" >Quality Management Division</a>
+                <a href="{% url 'divmembers' 'MBSQ-Maintenance-Division' %}" >MBSQ Maintenance Division</a>                
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Administration</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Establishment-Section-I' %}">Establishment Section I</a>
+                <a href="{% url 'divmembers' 'Establishment-Section-II' %}">Establishment Section II</a>
+                <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}" >Finance and Accounts Section</a>
+                <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}" >Store and Purchase Section</a>            
+                <a href="{% url 'divmembers' 'Personnel-Cell' %}" >Personnel Cell</a>
+                <a href="{% url 'divmembers' 'Vigilance-Section' %}" >Vigilance Section</a>
+                <a href="{% url 'divmembers' 'Rajbhasha' %}" >Rajbhasha</a>
+                <a href="{% url 'divmembers' 'Right-to-Information-Cell' %}" >Right to Information Cell</a>
+                <a href="{% url 'divmembers' 'Canteen' %}" >Canteen</a>
+                <a href="{% url 'divmembers' 'Guest-House' %}" >Guest House</a>
+                <a href="{% url 'divmembers' 'Horticulture' %}" >Horticulture</a>
+                <a href="{% url 'divmembers' 'Security-Section' %}" >Security Section</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="login-box" style="padding-left:70px; padding-right:70px; padding-top:70px; padding-bottom:70px">
+            <h2>Login</h2>
+            <p>Please enter your Employee ID and your Password</p>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="employee_id"></label>
+                    <input type="text" id="employee_id" name="employee_id" placeholder="Employee ID" required>
+                </div>
+                <div class="input-container">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <p><a href="{% url 'reset_password' %}">Reset password</a></p>
+        </div>
+    </div>
+</body>
 </html>
+

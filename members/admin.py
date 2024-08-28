@@ -36,7 +36,7 @@ class MemberAdmin(UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'employee_id', 'name', 'email', 'phone_number','department', 'password1', 'password2',
+                'employee_id', 'name', 'email', 'phone_number','department', 'designation', 'password1', 'password2',
                 'is_staff', 'is_active', 'intercom_off', 'intercom_res',
             ),
         }),

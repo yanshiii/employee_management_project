@@ -7,17 +7,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Details</title>
     <link rel="stylesheet" href="{% static 'self_updation.css' %}">
-   </head>
+</head>
 <body>
     <div class="topnav">
         <a href="/">Home</a>
         <a href="/members">Members</a>
-        <a href="/divisions">Divisions</a>
+        <div class="dropdown">
+            <button class="dropbtn">Divisions</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+                <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+                <a href="{% url 'divmembers' 'Flexible-Pavements-Division' %}">Flexible Pavements Division</a>
+                <a href="{% url 'divmembers' 'Pavement-Evaluation-Division' %}">Pavement Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Rigid-Pavements-Division' %}">Rigid Pavements Division</a>
+                <a href="{% url 'divmembers' 'Transportation-Planning-and-Environment-Division' %}">Transportation Planning and Environment Division</a>
+                <a href="{% url 'divmembers' 'Traffic-Engineering-and-Safety-Division' %}">Traffic Engineering and Safety Division</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">R&D Management Areas</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Knowledge-Resource-Centre' %}">Knowledge Resource Centre</a>
+                <a href="{% url 'divmembers' 'Director-Office' %}">Director's Office</a>
+                <a href="{% url 'divmembers' 'Controller-of-Administration' %}">Controller of Administration</a>
+                <a href="{% url 'divmembers' 'Administration-Office' %}">Administration Office</a>
+                <a href="{% url 'divmembers' 'Computer-Centre-and-Network-Division' %}">Computer Centre and Network Division</a>
+                <a href="{% url 'divmembers' 'Information-Liaison-and-Training-Division' %}">Information Liaison and Training Division</a>
+                <a href="{% url 'divmembers' 'Planning-Monitoring-and-Evaluation-Division' %}">Planning Monitoring and Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Engineering-Services-Division' %}">Engineering Services Division</a>
+                <a href="{% url 'divmembers' 'Mechanical-and-Transport-Division' %}">Mechanical and Transport Division</a>
+                <a href="{% url 'divmembers' 'Quality-Management-Division' %}">Quality Management Division</a>
+                <a href="{% url 'divmembers' 'MBSQ-Maintenance-Division' %}">MBSQ Maintenance Division</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Administration</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Establishment-Section-I' %}">Establishment Section I</a>
+                <a href="{% url 'divmembers' 'Establishment-Section-II' %}">Establishment Section II</a>
+                <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}">Finance and Accounts Section</a>
+                <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}">Store and Purchase Section</a>
+                <a href="{% url 'divmembers' 'Personnel-Cell' %}">Personnel Cell</a>
+                <a href="{% url 'divmembers' 'Vigilance-Section' %}">Vigilance Section</a>
+                <a href="{% url 'divmembers' 'Rajbhasha' %}">Rajbhasha</a>
+                <a href="{% url 'divmembers' 'Right-to-Information-Cell' %}">Right to Information Cell</a>
+                <a href="{% url 'divmembers' 'Canteen' %}">Canteen</a>
+                <a href="{% url 'divmembers' 'Guest-House' %}">Guest House</a>
+                <a href="{% url 'divmembers' 'Horticulture' %}">Horticulture</a>
+                <a href="{% url 'divmembers' 'Security-Section' %}">Security Section</a>
+            </div>
+        </div>
     </div>
-    <div class="details-container" style="padding-top:150px; margin-top:300px">
-        <div class="details-box" style="padding-top:50px">
+
+    <div class="details-container">
+        <div class="details-box">
             <h2>Update Details for {{ member.name }}</h2>
-            <form method="post" style="padding-top :50px">
+            <form method="post">
                 {% csrf_token %}
                 
                 <div class="input-container">
@@ -64,13 +111,14 @@
                     <label for="bpub">Book(s) Published:</label>
                     <input type="number" id="bpub" name="bpub" value="{{ member.bpub }}">
                 </div>
+                
                 <div class="input-container">
                     <label for="number_of_interns">Number of Interns:</label>
                     <input type="number" id="number_of_interns" name="number_of_interns" value="{{ member.number_of_interns }}">
                 </div>
 
                 <div class="input-container">
-                    <label for="number_of_interns">Number of Conferences Attended:</label>
+                    <label for="conferences_attended">Number of Conferences Attended:</label>
                     <input type="number" id="conferences_attended" name="conferences_attended" value="{{ member.conferences_attended }}">
                 </div>
                 
@@ -80,43 +128,3 @@
     </div>
 </body>
 </html>
-
-
-<style>
-    .topnav {
-        background-color: rgb(3, 77, 151);
-        color: #ffffff;
-        padding: 5px 5px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        position: fixed;
-        top: 0;
-        z-index: 1000;
-        left: 0;
-    }
-    
-    .topnav a {
-        text-decoration: none;
-        color: #ffffff;
-        padding: 10px 10px;
-        transition: color 0.3s;
-    }
-    
-    .topnav a:hover,
-    .topnav a:active {
-        text-decoration: underline;
-        color: #ffd700;
-    }
-    
-    @media (max-width: 768px) {
-        .topnav {
-            justify-content: space-around;
-            flex-direction: row;
-        }
-    }
-    
-
-</style>

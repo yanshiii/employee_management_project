@@ -2,56 +2,100 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url(final_bg.jpg);
+    /* background-image: url(final_bg.jpg); */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
 }
 
-/* Topnav CSS */
 .topnav {
-    background-color: rgb(3, 77, 151);
+    background-color: #AA184E;
     color: #ffffff;
-    padding: 5px 5px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around; /* Adjusted for even spacing */
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 1000;
-    left: 0;
+    height: 50px; /* Fixed height */
+    padding: 0;
 }
 
-.topnav a {
+.topnav a, .topnav .dropbtn {
     text-decoration: none;
     color: #ffffff;
-    padding: 10px 10px;
+    padding: 15px 20px; /* Adjust padding for better alignment */
     transition: color 0.3s;
+    display: flex;
+    align-items: center; /* Center text vertically */
+    height: 100%;
 }
 
 .topnav a:hover,
-.topnav a:active {
+.topnav a:active,
+.topnav .dropbtn:hover {
+    color: white;
     text-decoration: underline;
-    color: #ffd700;
-}
-
-@media (max-width: 768px) {
-    .topnav {
-        justify-content: space-around;
-        flex-direction: row;
-    }
 }
 
 
-.login-container {
+
+.dropbtn {
+    background-color: #AA184E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: #AA184E; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-size:13px;
+  }
+
+  .dropdown-content a {
+    color: white; /* Match the topnav link color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #323e4d; 
+    color: white; 
+    text-decoration: underline;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #AA184E;
+    color: white;
+  }
+.main-content {
+    margin-top: 80px; /* Compensate for the fixed navigation bar */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin-right: 20px;
+    flex-grow: 1;
 }
 
 .login-box {
@@ -61,8 +105,7 @@ body {
     text-align: center;
     max-width: 400px;
     width: 100%;
-    padding-right: 70px;
-    
+    padding: 20px;
 }
 
 h2 {
@@ -78,10 +121,7 @@ p {
 
 .input-container {
     position: relative;
-    padding-left: 5px;
     margin-bottom: 20px;
-    margin-right: 10px;
-
 }
 
 .input-container label {
@@ -93,7 +133,7 @@ p {
 
 .input-container input {
     width: 100%;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
     font-size: 16px;
@@ -102,7 +142,7 @@ p {
 .login-button {
     width: 100%;
     padding: 12px;
-    background-color: #00c853;
+    background-color: #323e4d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -112,13 +152,5 @@ p {
 }
 
 .login-button:hover {
-    background-color: #00b44e;
+    background-color: #AA184E;
 }
-.input-container{
-    
-    padding-right: -5;
-    padding-left: 0px;
-    padding-right: -5;
-
-}
-

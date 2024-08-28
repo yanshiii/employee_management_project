@@ -15,13 +15,42 @@ class MemberManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)  # Ensure this is set for superusers
         return self.create_user(employee_id, password, **extra_fields)
 
-class Member(AbstractBaseUser, PermissionsMixin):
+class Member(AbstractBaseUser, PermissionsMixin):                     
+    DEPARTMENT_CHOICES = [('Bridge Engineering and Structures Division', 'Bridge Engineering and Structures Division'),
+    ('Geotechnical Engineering Division', 'Geotechnical Engineering Division'),
+    ('Flexible Pavements Division', 'Flexible Pavements Division'),
+    ('Pavement Evaluation Division', 'Pavement Evaluation Division'),
+    ('Rigid Pavements Division', 'Rigid Pavements Division'),
+    ('Transportation Planning and Environment Division', 'Transportation Planning and Environment Division'),
+    ('Traffic Engineering and Safety Division', 'Traffic Engineering and Safety Division'), ('Knowledge Resource Centre','Knowledge Resource Centre'),
+    ('Director Office','Director Office'),
+    ('Controller of Administration','Controller of Administration'),
+    ('Administration Office','Administration Office'),
+    ('Computer Centre and Network Division','Computer Centre and Network Division'),
+    ('Information Liaison and Training Division','Information Liaison and Training Division'),
+    ('Planning Monitoring and Evaluation Division','Planning Monitoring and Evaluation Division'),
+    ('Engineering Services Division','Engineering Services Division' ) ,        
+    ('Mechanical and Transport Division' ,'Mechanical and Transport Division' ),
+    ('Quality Management Division','Quality Management Division'),
+    ('MBSQ Maintenance Division','MBSQ Maintenance Division'),('Establishment Section I','Establishment Section I' ),
+    ('Establishment Section II','Establishment Section II'),
+    ('Finance and Accounts Section','Finance and Accounts Section') ,
+    ('Store and Purchase Section','Store and Purchase Section'),      
+    ('Personnel Cell','Personnel Cell'), 
+    ('Vigilance Section','Vigilance Section'),
+    ('Rajbhasha','Rajbhasha'),
+    ('Right to Information Cell','Right to Information Cell' ), 
+    ('Canteen','Canteen'),
+    ('Guest House','Guest House' ),
+    ('Horticulture','Horticulture' ), 
+    ('Security Section','Security Section'),]
+    
     employee_id = models.CharField(max_length=4, unique=True)
     name = models.CharField(max_length=255)
     intercom_off = models.CharField(max_length=10)
     intercom_res = models.CharField(max_length=10)
     phone_number = models.CharField(max_length=15)
-    department = models.CharField(max_length=255)
+    department = models.CharField(max_length=255, choices=DEPARTMENT_CHOICES)
     designation = models.CharField(max_length=255)
     email = models.EmailField()
     jpub = models.CharField(max_length=255, default='-')
@@ -31,12 +60,10 @@ class Member(AbstractBaseUser, PermissionsMixin):
     conferences_attended = models.CharField(max_length=255, default='-')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
     objects = MemberManager()
 
     USERNAME_FIELD = 'employee_id'
-    REQUIRED_FIELDS = ['email']  # Add fields required when creating a superuser
-
+    REQUIRED_FIELDS = ['email']  
     def __str__(self):
         return self.employee_id
     

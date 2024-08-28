@@ -22,3 +22,5 @@ from django.contrib.auth import authenticate
 # Test with known employee ID and password
 user = authenticate(employee_id='693', password='crri@123')
 print(user)  # Should
+
+
