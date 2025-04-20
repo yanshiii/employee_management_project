@@ -4,7 +4,6 @@ from django.contrib.auth.hashers import check_password
 from .models import Member
 import logging
 logger = logging.getLogger(__name__)
-# pbkdf2_sha256$260000$KmC7czSvcp6u$BRCX2XGnSiyWxKx6VEMAE/FUocXppkAfV0lLKjRyKh8=
 
 class EmployeeIDBackend(BaseBackend):
     def authenticate(self, request, employee_id=None, password=None, **kwargs):
