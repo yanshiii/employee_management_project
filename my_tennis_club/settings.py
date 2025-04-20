@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -26,11 +25,16 @@ SECRET_KEY = 'django-insecure-v9i37%()(4ezu137%wii2x%a+efp@g9ta^z_0$7nvw^8d*)798
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'mystaticfiles'
+]
 
 # Application definition
 
@@ -44,18 +48,16 @@ INSTALLED_APPS = [
     'members',
 ]
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise after SecurityMiddleware!
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
 
 ROOT_URLCONF = 'my_tennis_club.urls'
 
@@ -77,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_tennis_club.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -87,7 +88,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -107,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -118,16 +117,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'mystaticfiles'
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -142,11 +131,7 @@ AUTHENTICATION_BACKENDS = [
 
 # Login URL
 LOGIN_URL = 'login_view'
-
-# settings.py
-
 LOGIN_REDIRECT_URL = '/emp_details/'
-
 
 if os.getenv('DJANGO_ENV') == 'production':
     SESSION_COOKIE_SECURE = True
@@ -154,6 +139,5 @@ if os.getenv('DJANGO_ENV') == 'production':
 else:
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
-
 
 AUTH_USER_MODEL = 'members.Member'
