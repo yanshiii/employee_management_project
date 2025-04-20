@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{% static 'self_updation.css' %}">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        <div class="dropdown">
+            <button class="dropbtn">Divisions</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Bridge-Engineering-and-Structures-Division' %}">Bridge Engineering and Structures</a>
+                <a href="{% url 'divmembers' 'Geotechnical-Engineering-Division' %}">Geotechnical Engineering Division</a>
+                <a href="{% url 'divmembers' 'Flexible-Pavements-Division' %}">Flexible Pavements Division</a>
+                <a href="{% url 'divmembers' 'Pavement-Evaluation-Division' %}">Pavement Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Rigid-Pavements-Division' %}">Rigid Pavements Division</a>
+                <a href="{% url 'divmembers' 'Transportation-Planning-and-Environment-Division' %}">Transportation Planning and Environment Division</a>
+                <a href="{% url 'divmembers' 'Traffic-Engineering-and-Safety-Division' %}">Traffic Engineering and Safety Division</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">R&D Management Areas</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Knowledge-Resource-Centre' %}">Knowledge Resource Centre</a>
+                <a href="{% url 'divmembers' 'Director-Office' %}">Director's Office</a>
+                <a href="{% url 'divmembers' 'Controller-of-Administration' %}">Controller of Administration</a>
+                <a href="{% url 'divmembers' 'Administration-Office' %}">Administration Office</a>
+                <a href="{% url 'divmembers' 'Computer-Centre-and-Network-Division' %}">Computer Centre and Network Division</a>
+                <a href="{% url 'divmembers' 'Information-Liaison-and-Training-Division' %}">Information Liaison and Training Division</a>
+                <a href="{% url 'divmembers' 'Planning-Monitoring-and-Evaluation-Division' %}">Planning Monitoring and Evaluation Division</a>
+                <a href="{% url 'divmembers' 'Engineering-Services-Division' %}">Engineering Services Division</a>
+                <a href="{% url 'divmembers' 'Mechanical-and-Transport-Division' %}">Mechanical and Transport Division</a>
+                <a href="{% url 'divmembers' 'Quality-Management-Division' %}">Quality Management Division</a>
+                <a href="{% url 'divmembers' 'MBSQ-Maintenance-Division' %}">MBSQ Maintenance Division</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Administration</button>
+            <div class="dropdown-content">
+                <a href="{% url 'divmembers' 'Establishment-Section-I' %}">Establishment Section I</a>
+                <a href="{% url 'divmembers' 'Establishment-Section-II' %}">Establishment Section II</a>
+                <a href="{% url 'divmembers' 'Finance-and-Accounts-Section' %}">Finance and Accounts Section</a>
+                <a href="{% url 'divmembers' 'Store-and-Purchase-Section' %}">Store and Purchase Section</a>
+                <a href="{% url 'divmembers' 'Personnel-Cell' %}">Personnel Cell</a>
+                <a href="{% url 'divmembers' 'Vigilance-Section' %}">Vigilance Section</a>
+                <a href="{% url 'divmembers' 'Rajbhasha' %}">Rajbhasha</a>
+                <a href="{% url 'divmembers' 'Right-to-Information-Cell' %}">Right to Information Cell</a>
+                <a href="{% url 'divmembers' 'Canteen' %}">Canteen</a>
+                <a href="{% url 'divmembers' 'Guest-House' %}">Guest House</a>
+                <a href="{% url 'divmembers' 'Horticulture' %}">Horticulture</a>
+                <a href="{% url 'divmembers' 'Security-Section' %}">Security Section</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-box">
+            <h2>Update Details for {{ member.name }}</h2>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="input-container">
+                    <label for="intercom_off">Intercom Office:</label>
+                    <input type="text" id="intercom_off" name="intercom_off" value="{{ member.intercom_off }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="intercom_res">Intercom Residence:</label>
+                    <input type="text" id="intercom_res" name="intercom_res" value="{{ member.intercom_res }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ member.phone_number }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" value="{{ member.department }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="designation">Designation:</label>
+                    <input type="text" id="designation" name="designation" value="{{ member.designation }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ member.email }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="jpub">Journal(s) Published:</label>
+                    <input type="number" id="jpub" name="jpub" value="{{ member.jpub }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="cpub">Conference Paper(s) Published:</label>
+                    <input type="number" id="cpub" name="cpub" value="{{ member.cpub }}">
+                </div>
+
+                <div class="input-container">
+                    <label for="bpub">Book(s) Published:</label>
+                    <input type="number" id="bpub" name="bpub" value="{{ member.bpub }}">
+                </div>
+                
+                <div class="input-container">
+                    <label for="number_of_interns">Number of Interns:</label>
+                    <input type="number" id="number_of_interns" name="number_of_interns" value="{{ member.number_of_interns }}">
+                </div>
+
+                <div class="input-container">
+                    <label for="conferences_attended">Number of Conferences Attended:</label>
+                    <input type="number" id="conferences_attended" name="conferences_attended" value="{{ member.conferences_attended }}">
+                </div>
+                
+                <button type="submit" class="update-button">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

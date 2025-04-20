@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  {{ department_name }}
+{% endblock %}
+
+{% block content %}
+  <h1>{{ department_name }}</h1>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Intercom Office</th>
+      <th>Intercom Residence</th>
+      <th>Mobile Number</th>
+      <th>Division</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Journal Article(s) Published</th>
+      <th>Conference Paper(s) Published</th>
+      <th>Book(s) Published</th>
+      <th>Worked with Intern(s)</th>
+      <th>Conferences Attended</th>
+    </tr>
+
+    {% for x in mymembers %}
+      <tr>
+        <td ><a href="/members/details/{{ x.name }}">{{ x.name }}</a></td>
+        <td >{{ x.employee_id }}</td>
+        <td >{{ x.intercom_off }}</td>
+        <td >{{ x.intercom_res }}</td>
+        <td >{{ x.phone_number }}</td>
+        <td >{{ x.department }}</td>
+        <td >{{ x.designation }}</td>
+        <td >{{ x.email }}</td>
+        <td >{{ x.jpub }}</td>
+        <td >{{ x.cpub }}</td>
+        <td >{{ x.bpub }}</td>
+        <td >{{ x.number_of_interns }}</td>
+        <td >{{ x.conferences_attended }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <p><a href="/divisions" style="color: #ffd700; text-decoration: underline;">BACK TO DIVISIONS</a></p>
+{% endblock %}

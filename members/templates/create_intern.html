@@ -1,0 +1,13 @@
+<!-- create_intern.html -->
+
+{% extends 'master.html' %}
+
+{% block content %}
+  <h2>Add Intern for {{ member.name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'details' member.id %}">Back to Member Details</a>
+{% endblock %}

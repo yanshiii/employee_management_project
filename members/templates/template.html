@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css?v=1.0' %}">
+<body>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Intercom Office</th>
+      <th>Intercom Residence</th>
+      <th>Mobile Number</th>
+      <th>Division</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Papers Published</th>
+      <th>Worked with Intern(s)</th>
+    </tr>
+    
+    {% for x in mymembers %}
+      <tr>
+        <td>{{ x.name }}</td>
+        <td>{{ x.intercom_off }}</td>
+        <td>{{ x.intercom_res }}</td>
+        <td>{{ x.phone_number }}</td>
+        <td>{{ x.department }}</td>
+        <td>{{ x.designation }}</td>
+        <td>{{ x.email }}</td>
+        <td>{{ x.pprs_published }}</td>
+        <td>{{ x.number_of_interns }}</td>
+        
+      </tr>
+    {% endfor %}
+  </table>
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,95 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+  CRRI - List of all Members
+{% endblock %}
+
+{% block content %}
+
+<h1>Members</h1>
+<p><a href="/print" style="background-color: #AA184E; top: 50px; padding: 5px; text-decoration: none; font-weight:bold">DIRECTORY FORMAT</a> </p>
+<div class="table-container">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th style="background-color: #AA184E;">Name</th>
+      <th style="background-color: #AA184E;" >ID</th>
+      <th style="background-color: #AA184E;">Intercom Office</th>
+      <th style="background-color: #AA184E;">Intercom Residence</th>
+      <th style="background-color: #AA184E;">Mobile Number</th>
+      <th style="background-color: #AA184E;">Division</th>
+      <th style="background-color: #AA184E;">Designation</th>
+      <th style="background-color: #AA184E;">Email</th>
+      <th style="background-color: #AA184E;">Journal Article(s) Published</th>
+      <th style="background-color: #AA184E;">Conference Paper(s) Published</th>
+      <th style="background-color: #AA184E;">Book(s) Published</th>
+      <th style="background-color: #AA184E;">Worked with Intern(s)</th>
+      <th style="background-color: #AA184E;">Conferences Attended</th>
+    </tr>
+
+    {% for mymember in mymembers %}
+      <tr>
+        <td ><a href="/members/details/{{ mymember.name }}">{{ mymember.name }}</a></td>
+        <td >{{ mymember.employee_id }}</td>
+        <td >{{ mymember.intercom_off|default:"-" }}</td>
+        <td >{{ mymember.intercom_res|default:"-" }}</td>
+        <td >{{ mymember.phone_number }}</td>
+        <td >{{ mymember.department }}</td>
+        <td >{{ mymember.designation }}</td>
+        <td >{{ mymember.email }}</td>
+        <td >{{ mymember.jpub|default:"-" }}</td>
+        <td >{{ mymember.cpub|default:"-" }}</td>
+        <td >{{ mymember.bpub|default:"-" }}</td>
+        <td >{{ mymember.number_of_interns|default:"-" }}</td>
+        <td >{{ mymember.conferences_attended|default:"-" }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
+
+
+
+
+
+{% comment %} 
+ {% block content %}
+ <h1>Members</h1>
+ 
+ <div class="table-container">
+   <table class="table table-striped table-hover">
+     <tr>
+       <!-- Your table headers here -->
+     </tr>
+ 
+     {% for member in mymembers %}
+       <tr>
+         <!-- Your data cells here -->
+         <td>{{ member.name }}</td>
+         <td>{{ member.employee_id }}</td>
+         <!-- Other fields -->
+       </tr>
+     {% endfor %}
+   </table>
+ </div>
+ 
+ <div class="pagination">
+   {% if mymembers.has_previous %}
+     <a href="?page=1">&laquo; First</a>
+     <a href="?page={{ mymembers.previous_page_number }}">Previous</a>
+   {% endif %}
+ 
+   {% for num in mymembers.paginator.page_range %}
+     {% if mymembers.number == num %}
+       <strong>{{ num }}</strong>
+     {% else %}
+       <a href="?page={{ num }}">{{ num }}</a>
+     {% endif %}
+   {% endfor %}
+ 
+   {% if mymembers.has_next %}
+     <a href="?page={{ mymembers.next_page_number }}">Next</a>
+     <a href="?page={{ mymembers.paginator.num_pages }}">Last &raquo;</a>
+   {% endif %}
+ </div>
+ {% endblock %}
+  {% endcomment %}
